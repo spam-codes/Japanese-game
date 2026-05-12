@@ -1,8 +1,21 @@
 import { useEffect, useState } from 'react';
-import Card from '../public/components/card'
-import Button from '../public/components/Button';
+import Card from './components/card'
+import Button from './components/Button';
 import { hiragana } from './data/hiragana';
-import Header from '../public/components/header';
+import Header from './components/header';
+import ThemesSection from './components/themes';
+import {themes} from '../src/themes/themeObject'
+import { katakana } from './data/katakana';
+import { hiraganaCombination } from './data/hiraganaCombination';
+import { katakanaCombination } from './data/katakanaCombination';
+
+
+    export const scripts = {
+        hiragana,
+        katakana,
+        hiraganaCombination,
+        katakanaCombination
+    }
 
 function App(){
 
@@ -10,6 +23,11 @@ function App(){
   const [isSpinning, setIsSpinning] = useState(false);  // for spinning 
   const [showRomaji, setShowRomaji] = useState(false);  // for the romaji text
   const [script, changeScript] = useState('hiragana');   // for the header buttons
+  const [activeMode, setActiveMode] = useState('hiragana'); // for header
+  const [theme, setTheme] = useState('dark');
+  const [isThemeClicked, setIsThemeClicked] = useState(false);
+
+  let background = themes[theme].background;
 
   // useEffect(()=>{
         function changeCharacter(){
@@ -19,8 +37,21 @@ function App(){
           setShowRomaji(false);
 
             const intervalId = setInterval(()=>{
-               const index = Math.floor(Math.random()*script.length);
-               updateCharacter(index);
+                const data = scripts[script];
+                let bag = [...data];
+
+                function shuffle(array){
+                    for(let i=array.length-1; i>0; i-- ){
+                    const j = Math.floor(Math.random()*(i+1));
+
+                      [array[i], array[j]] = [array[j], array[i]];
+                }
+
+                   return array;
+               }
+
+               bag = shuffle(bag);
+               updateCharacter(bag.pop().id-1);
                console.log("change character");
             },100)
 
@@ -32,22 +63,39 @@ function App(){
         }
   // }, [])
 
+
   function showRomajiFunction(){
     setShowRomaji(!showRomaji)
   }
 
   function changeScriptFunction(type){
         changeScript(type);
+        setActiveMode(type);
   }
 
+  //change Theme function
+
+  function changeTheme(type){
+      setTheme(type);
+      // setIsThemeClicked(!isThemeClicked);
+  }
+
+  // theme icon drop down function
+
+   function changeIsThemeClicked(){
+        setIsThemeClicked(!isThemeClicked);
+    }
+
   return(
-    <div className='flex flex-col items-center justify-center h-screen w-screen'>
-      <Header changeScriptFunction={changeScriptFunction}/>
-      <Card character={character} showRomaji={showRomaji} script={script} />
+    <div className={`flex flex-col items-center justify-center h-screen w-screen ${background}`}>
+      <Header changeScriptFunction={changeScriptFunction} activeMode={activeMode} theme={theme}/>
+      <ThemesSection changeTheme={changeTheme} changeIsThemeClicked={changeIsThemeClicked} isThemeClicked={isThemeClicked} theme={theme}/>
+      <Card character={character} showRomaji={showRomaji} script={script} theme={theme}/>
       <div className='flex gap-30'>
-         <Button functionOnClick={changeCharacter} buttonValue={"Spin"} />
-         <Button functionOnClick={showRomajiFunction} buttonValue={showRomaji?"Hide Romaji":"Show Romaji"}/>
+         <Button functionOnClick={changeCharacter} buttonValue={"Spin"}  theme={theme}/>
+         <Button functionOnClick={showRomajiFunction} buttonValue={showRomaji?"Hide Romaji":"Show Romaji"}theme={theme}/>
       </div>
+      <div className='text-white absolute bottom-0 font-medium'>Copyright@Samit</div>
     </div>
   )
 }
