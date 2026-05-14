@@ -19,14 +19,14 @@ function ThemesSection({changeTheme, changeIsThemeClicked, isThemeClicked, theme
 
     `
 
-    return <div className="absolute top-20 md:top-30 right-10 md:right-20 flex-col justify-end">
+    return <div className="absolute top-20 md:top-30 left-5 md:left-20 flex-col justify-end">
         <div className="flex justify-end cursor-pointer" onClick={changeIsThemeClicked}><IoIosSunny className={`size-9 ${themeDivTextColor}`}/></div>
         <AnimatePresence>
         {
         isThemeClicked&&<motion.div className={`${themeDivTextColor} flex flex-col gap-2 md:gap-5 z-10`}
         initial={{
             opacity:0,
-            x:1000
+            x:-1000
         }}
 
         animate={{
@@ -36,7 +36,7 @@ function ThemesSection({changeTheme, changeIsThemeClicked, isThemeClicked, theme
 
         exit={{
             opacity:0,
-            x:1000
+            x:-1000
         }}
 
         transition={{
