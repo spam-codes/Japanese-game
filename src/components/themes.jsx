@@ -5,7 +5,7 @@ import { IoIosSunny } from "react-icons/io";
 import { themes } from "../themes/themeObject";
 
 
-function ThemesSection({changeTheme, changeIsThemeClicked, isThemeClicked, theme}){
+function ThemesSection({changeTheme, changeIsThemeClicked, isThemeClicked, theme, isMenuOn}){
 
     let themeDivTextColor = themes[theme].text;
 
@@ -19,24 +19,24 @@ function ThemesSection({changeTheme, changeIsThemeClicked, isThemeClicked, theme
 
     `
 
-    return <div className="absolute top-20 md:top-30 left-5 md:left-20 flex-col justify-end">
+    return !isMenuOn&&<div className="absolute top-20 md:top-30 right-10 md:right-20 flex-col justify-end">
         <div className="flex justify-end cursor-pointer" onClick={changeIsThemeClicked}><IoIosSunny className={`size-9 ${themeDivTextColor}`}/></div>
         <AnimatePresence>
         {
         isThemeClicked&&<motion.div className={`${themeDivTextColor} flex flex-col gap-2 md:gap-5 z-10`}
         initial={{
             opacity:0,
-            x:-1000
+            x:1000
         }}
 
         animate={{
             opacity:1,
-            x:15,
+            x:10,
         }}
 
         exit={{
             opacity:0,
-            x:-1000
+            x:1000
         }}
 
         transition={{

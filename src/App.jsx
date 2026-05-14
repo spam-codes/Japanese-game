@@ -70,17 +70,19 @@ function App(){
     setShowRomaji(!showRomaji)
   }
 
-  function changeScriptFunction(type){
+  function changeScriptFunction(type, isMobileView){
         changeScript(type);
         updateCharacter(0);
         setActiveMode(type);
+        if(isMobileView) changeIsMenuOn();
   }
 
   //change Theme function
 
   function changeTheme(type){
       setTheme(type);
-      // setIsThemeClicked(!isThemeClicked);
+      setIsThemeClicked(!isThemeClicked);
+
   }
 
   // theme icon drop down function
@@ -98,7 +100,7 @@ function App(){
   return(
     <div className={`flex flex-col items-center justify-center h-screen w-screen ${background}`}>
       <Header changeScriptFunction={changeScriptFunction} activeMode={activeMode} theme={theme} isMenuOn={isMenuOn} changeIsMenuOn={changeIsMenuOn} script={script}/>
-      <ThemesSection changeTheme={changeTheme} changeIsThemeClicked={changeIsThemeClicked} isThemeClicked={isThemeClicked} theme={theme}/>
+      <ThemesSection changeTheme={changeTheme} changeIsThemeClicked={changeIsThemeClicked} isThemeClicked={isThemeClicked} theme={theme} isMenuOn={isMenuOn}/>
       <Card character={character} showRomaji={showRomaji} script={script} theme={theme}/>
       <div className='flex gap-24 md:gap-30'>
          <Button functionOnClick={changeCharacter} buttonValue={"Spin"}  theme={theme}/>
