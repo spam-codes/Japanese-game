@@ -26,8 +26,10 @@ function App(){
   const [activeMode, setActiveMode] = useState('hiragana'); // for header
   const [theme, setTheme] = useState('dark');
   const [isThemeClicked, setIsThemeClicked] = useState(false);
+  const [isMenuOn, setIsMenuOn] = useState(false);
 
   let background = themes[theme].background;
+  let text = themes[theme].text;
 
   // useEffect(()=>{
         function changeCharacter(){
@@ -70,6 +72,7 @@ function App(){
 
   function changeScriptFunction(type){
         changeScript(type);
+        updateCharacter(0);
         setActiveMode(type);
   }
 
@@ -86,16 +89,22 @@ function App(){
         setIsThemeClicked(!isThemeClicked);
     }
 
+    // for mobile view
+
+    function changeIsMenuOn(){
+      setIsMenuOn(!isMenuOn);
+    }
+
   return(
     <div className={`flex flex-col items-center justify-center h-screen w-screen ${background}`}>
-      <Header changeScriptFunction={changeScriptFunction} activeMode={activeMode} theme={theme}/>
+      <Header changeScriptFunction={changeScriptFunction} activeMode={activeMode} theme={theme} isMenuOn={isMenuOn} changeIsMenuOn={changeIsMenuOn} script={script}/>
       <ThemesSection changeTheme={changeTheme} changeIsThemeClicked={changeIsThemeClicked} isThemeClicked={isThemeClicked} theme={theme}/>
       <Card character={character} showRomaji={showRomaji} script={script} theme={theme}/>
-      <div className='flex gap-30'>
+      <div className='flex gap-24 md:gap-30'>
          <Button functionOnClick={changeCharacter} buttonValue={"Spin"}  theme={theme}/>
          <Button functionOnClick={showRomajiFunction} buttonValue={showRomaji?"Hide Romaji":"Show Romaji"}theme={theme}/>
       </div>
-      <div className='text-white absolute bottom-0 font-medium'>Copyright@Samit</div>
+      <div className={`${text} absolute bottom-0 font-medium`}>Copyright@Samit</div>
     </div>
   )
 }

@@ -23,7 +23,7 @@ function Button({functionOnClick, buttonValue, theme}){
        }
        >
           <motion.button 
-           className={`cursor-pointer p-1 w-[200px] font-bold size-20 text-white text-2xl border-2 border-zinc-600  ${buttonTheme} hover:bg-zinc-700 rounded-2xl`} onClick={functionOnClick} 
+           className={`cursor-pointer p-1 w-[100px] md:w-[200px] font-bold size-20 text-white text-xl md:text-2xl border-2 border-zinc-600  ${buttonTheme} hover:bg-zinc-700 rounded-2xl`} onClick={functionOnClick} 
            >
            {buttonValue}
            </motion.button>
