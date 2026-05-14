@@ -5,14 +5,16 @@ export const themes = {
         card: "bg-zinc-100",
         text: "text-white",
         button: "bg-zinc-800",
+        japaneseText: "text-emerald-400"
     },
 
-    cyber:{
+    retro:{
         background: "bg-slate-950",
         header: "bg-cyan-950",
         card: "bg-slate-100",
         button: "bg-cyan-500",
         text: "text-white",
+        japaneseText: "text-fuchsia-400"
     },
 
     sakura:{
@@ -21,5 +23,6 @@ export const themes = {
         card: "bg-white",
         button: "bg-rose-400",
         text: "text-black",
+        japaneseText: "text-rose-600"
     }
 }

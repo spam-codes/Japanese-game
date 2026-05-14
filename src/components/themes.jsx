@@ -45,7 +45,7 @@ function ThemesSection({changeTheme, changeIsThemeClicked, isThemeClicked, theme
         }}
         >
             <button className={`${buttonStyle} ${theme==='dark'?onActiveButtonStyle:''} text-start`} onClick={()=>changeTheme('dark')}>Dark</button>
-            <button className={`${buttonStyle} ${theme==='cyber'?onActiveButtonStyle:''} text-start`} onClick={()=>changeTheme('cyber')}>Cyber</button>
+            <button className={`${buttonStyle} ${theme==='cyber'?onActiveButtonStyle:''} text-start`} onClick={()=>changeTheme('retro')}>Retro</button>
             <button className={`${buttonStyle} ${theme==='sakura'?onActiveButtonStyle:''} text-start`} onClick={()=>changeTheme('sakura')}>Sakura</button>
         </motion.div>
 }
