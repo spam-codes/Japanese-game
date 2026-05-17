@@ -1,8 +1,12 @@
 import { button } from "motion/react-client";
 import { themes } from "../themes/themeObject";
 import { easeInOut, motion, AnimatePresence } from "motion/react";
+import { useTheme } from "../../themeContext";
 
-function Header({changeScriptFunction, activeMode, theme, isMenuOn, changeIsMenuOn, script}){
+function Header({changeScriptFunction, activeMode, isMenuOn, changeIsMenuOn, script}){
+
+    const {theme, setTheme} = useTheme();
+    const currentTheme = themes[theme];
 
     let headerBackground = themes[theme].header;
     let headerText = themes[theme].text;
@@ -30,8 +34,8 @@ function Header({changeScriptFunction, activeMode, theme, isMenuOn, changeIsMenu
     ${headerText}
     `;
     
-    return <div className={`${headerBackground} ${headerText} absolute top-0 w-screen h-15 flex justify-end items-center`}>
-        <div className="font-bold text-3xl absolute left-4 yuji-font">Learn <span className={`${themes[theme].japaneseText}`}>日本語</span></div>
+    return <div className={`${currentTheme.header} ${currentTheme.text} absolute top-0 w-screen h-15 flex justify-end items-center`}>
+        <div className="font-bold text-3xl absolute left-4 yuji-font">Learn <span className={`${currentTheme.japaneseText}`}>日本語</span></div>
         <div className="hidden md:flex">
             <button className={`${buttonStyle} ${activeMode==='hiragana'?activeStyle:''}`} onClick={()=>changeScriptFunction('hiragana',false)} >Hiragana</button>
             <button className={`${buttonStyle} ${activeMode==='katakana'?activeStyle:''}`} onClick={()=>changeScriptFunction('katakana', false)}>Katakana</button>

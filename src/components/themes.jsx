@@ -3,11 +3,15 @@ import { easeInOut, motion, AnimatePresence } from "motion/react";
 import { button } from "motion/react-client";
 import { IoIosSunny } from "react-icons/io";
 import { themes } from "../themes/themeObject";
+import { useTheme } from "../../themeContext";
+import { BiCurrentLocation } from "react-icons/bi";
 
 
-function ThemesSection({changeTheme, changeIsThemeClicked, isThemeClicked, theme, isMenuOn}){
+function ThemesSection({changeTheme, changeIsThemeClicked, isThemeClicked, isMenuOn, xyPosition}){
+    
+    const {theme, setTheme} = useTheme();
+    const currentTheme = themes[theme];
 
-    let themeDivTextColor = themes[theme].text;
 
     const buttonStyle = `
     hover:scale-110
@@ -19,11 +23,11 @@ function ThemesSection({changeTheme, changeIsThemeClicked, isThemeClicked, theme
 
     `
 
-    return !isMenuOn&&<div className="absolute top-20 md:top-30 right-10 md:right-20 flex-col justify-end">
-        <div className="flex justify-end cursor-pointer" onClick={changeIsThemeClicked}><IoIosSunny className={`size-9 ${themeDivTextColor}`}/></div>
+    return !isMenuOn&&<div style={{top:xyPosition.x, right:xyPosition.y}} className={`absolute md:top-30 md:right-20 flex-col justify-end z-10`}>
+        <div className="flex justify-end cursor-pointer" onClick={changeIsThemeClicked}><IoIosSunny className={`size-9 ${currentTheme.text}`}/></div>
         <AnimatePresence>
         {
-        isThemeClicked&&<motion.div className={`${themeDivTextColor} flex flex-col gap-2 md:gap-5 z-10`}
+        isThemeClicked&&<motion.div className={`${currentTheme.text} flex flex-col gap-2 md:gap-5 z-10 bg-white/10 rounded-lg backdrop-blur-2xl`}
         initial={{
             opacity:0,
             x:1000
