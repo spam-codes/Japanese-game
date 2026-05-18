@@ -27,7 +27,7 @@ function ModesCard(){
         transition={{
             duration:0.2
         }}
-        className={`${currentTheme.card} border rounded-2xl h-[40vh] w-50 md:w-[38vw] flex flex-col items-center justify-center`}>
+        className={`${currentTheme.card} border rounded-2xl h-[40vh] w-48 md:w-[38vw] flex flex-col items-center justify-center`}>
             <div className=""><GiSpinningSword className="size-20 md:size-30" /></div>
             <h1 className={`text-xl md:text-2xl font-bold mt-3 ${currentTheme.text}`}>Memory Game</h1>
             <p className={`${currentTheme.subText} text-center text-sm md:text-lg p-2`}>Test your recognition skills with a fun spin game. Random characters, real learning</p>
@@ -58,7 +58,7 @@ function ModesCard(){
         className={`border rounded-2xl h-[40vh] w-50 md:w-[38vw] flex flex-col items-center justify-center ${currentTheme.card}`}>
             <div><PiPencilLineFill className="size-20 md:size-30"/></div>
             <h1 className={`text-xl md:text-2xl font-bold mt-3 ${currentTheme.text}`}>Writing Practice</h1>
-            <p className={`${currentTheme.subText} text-center text-sm md:text-lg p-2`}>Practice writing characters step by step and improve your stroke accuracy</p>
+            <p className={`${currentTheme.subText} text-center text-sm md:text-lg p-1`}>Practice writing characters step by step and improve your stroke accuracy</p>
             <motion.div
             whileHover={{
                 scale:1.1

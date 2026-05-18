@@ -3,6 +3,7 @@ import { themes } from "../../themes/themeObject";
 import Header from "../Home/header";
 import Canva from "./canva";
 import DrawingGuide from "./drawingGuideCard";
+import Copyright from "../../components/copyrightSection";
 
 function WritingPractice(){
     
@@ -10,10 +11,13 @@ function WritingPractice(){
     const currentTheme = themes[theme];
 
 
-    return <div className={`${currentTheme.background} h-screen w-screen flex flex-col items-center`}>
+    return <>
+    <div className={`${currentTheme.background} h-screen w-screen flex flex-col items-center`}>
         <Header/>
-        <DrawingGuide/>    
+        <DrawingGuide/>   
     </div>
+    <Copyright/> 
+    </>
 }
 
 export default WritingPractice;

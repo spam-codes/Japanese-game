@@ -12,13 +12,15 @@ function Home(){
   const { theme, setTheme} = useTheme();
   const currentTheme = themes[theme];
 
-    return <div className={`h-screen w-screen ${currentTheme.background} relative`}>
+    return <>    <div className={`h-screen w-screen ${currentTheme.background} relative`}>
       <Header/>
       <HeroSection/>
       <ModesCard/>
       <div className={`flex items-center justify-center gap-2 p-2 ${currentTheme.subText} rounded-md mt-6`}><MdOutlineTipsAndUpdates/> Tip: Consistent practice everyday leads to mastery.</div>
-      <Copyright/>
     </div>
+    <Copyright/>
+    </>
+
 }
 
 export default Home;
