@@ -23,15 +23,14 @@ I have built this website to help learners learn Japanese in a fun and interacti
 
 <img width="451" height="860" alt="image" src="https://github.com/user-attachments/assets/cbc1020f-20fa-42aa-9eb4-960a935f0ef5" />
 
+<img width="457" height="857" alt="image" src="https://github.com/user-attachments/assets/3f5cc7f9-200e-4c77-b5fb-33659cfbf7c4" />
+
 
 # Themes
 
-Dark
 <img width="468" height="860" alt="image" src="https://github.com/user-attachments/assets/5732f819-82b2-4071-a44e-2548114f9a64" />
 
-Retro
 <img width="468" height="860" alt="image" src="https://github.com/user-attachments/assets/04aa854e-603c-404e-9219-45ba4b369dea" />
 
-Sakura
 <img width="458" height="857" alt="image" src="https://github.com/user-attachments/assets/68eaab6d-02d7-4792-b366-85c54f0268d3" />
 
